@@ -8,13 +8,11 @@ import (
 )
 
 func main() {
-	vid := 0403
-	pid := 6001
-	outputInterfaceID := 1
-	inputInterfaceID := 1
-	debugLevel := 1
+	outputInterfaceID := 0
+	inputInterfaceID := 0
+	debugLevel := 0
 
-	config := usbdmx.NewConfig(uint16(vid), uint16(pid), outputInterfaceID, inputInterfaceID, debugLevel)
+	config := usbdmx.NewConfig(uint16(0403), uint16(6001), outputInterfaceID, inputInterfaceID, debugLevel)
 	config.GetUSBContext()
 
 	controller := ft232.NewDMXController(config)
