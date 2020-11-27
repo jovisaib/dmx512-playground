@@ -3,31 +3,22 @@ package main
 import (
 	"log"
 
-	"github.com/oliread/usbdmx"
-	"github.com/oliread/usbdmx/ft232"
+	"github.com/akualab/dmx"
 )
 
 func main() {
-	vid := 1
-	pid := 1
-	outputInterfaceID := 1
-	inputInterfaceID := 1
-	debugLevel := 1
 
-	config := usbdmx.NewConfig(uint16(vid), uint16(pid), outputInterfaceID, inputInterfaceID, debugLevel)
-	config.GetUSBContext()
-
-	controller := ft232.NewDMXController(config)
-	if err := controller.Connect(); err != nil {
-		log.Fatal(err)
+	dmx, e := dmx.NewDMXConnection("/dev/ttyUSB0")
+	if e != nil {
+		log.Fatal(e)
 	}
 
-	controller.SetChannel(1, 255)
-	controller.SetChannel(2, 255)
-	controller.SetChannel(3, 255)
-	controller.SetChannel(4, 255)
+	// Set values for channels.
+	dmx.SetChannel(1, 100)
+	dmx.SetChannel(2, 70)
+	dmx.SetChannel(3, 130)
+	dmx.SetChannel(4, 180)
 
-	if err := controller.Render(); err != nil {
-		log.Fatal(err)
-	}
+	// Send!
+	dmx.Render()
 }
