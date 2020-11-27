@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/akualab/dmx"
+	"github.com/jovisaib/dmx512-playground/dmx"
 )
 
 func main() {
