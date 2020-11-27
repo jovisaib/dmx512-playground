@@ -59,7 +59,10 @@ func main() {
 		dmx.SetChannel(43, 130)
 		dmx.SetChannel(44, 180)
 
-		// Send!
-		dmx.Render()
+		if err := dmx.Render(); err != nil {
+			log.Fatal("RENDER ERROR: ", err)
+		}
+
+		log.Println("RENDER!")
 	}
 }
