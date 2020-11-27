@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	dmx, e := dmx.NewDMXConnection("/dev/ttyUSB0")
+	dmx, e := dmx.NewDMXConnection("/dev/tty3")
 	if e != nil {
 		log.Fatal(e)
 	}
