@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	vid := 1
-	pid := 1
+	vid := 0403
+	pid := 6001
 	outputInterfaceID := 1
 	inputInterfaceID := 1
 	debugLevel := 1
