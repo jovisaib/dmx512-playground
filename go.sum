@@ -1,0 +1,10 @@
+github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
+github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
+github.com/OliRead/usbdmx v0.0.0-20200510141510-3b43952fa44b h1:8MIcN2nuec2J/FSzvkvM/xVg6mNvbzxpLaLucFHazO0=
+github.com/OliRead/usbdmx v0.0.0-20200510141510-3b43952fa44b/go.mod h1:f/AUjvYEyjKnxFs9MCSMHxCWzW0xpyq8wZVFxmgaUA8=
+github.com/google/gousb v2.1.0+incompatible h1:ApzMDjF3FeO219QwWybJxYfFhXQzPLOEy0o+w9k5DNI=
+github.com/google/gousb v2.1.0+incompatible/go.mod h1:Tl4HdAs1ThE3gECkNwz+1MWicX6FXddhJEw7L8jRDiI=
+github.com/oliRead/usbdmx v0.0.0-20200510141510-3b43952fa44b h1:FEP1SD47F6ByZHXORHYRDbL5bFtARHqb0a1Iwn2ve78=
+github.com/oliRead/usbdmx v0.0.0-20200510141510-3b43952fa44b/go.mod h1:YzrEt8UdiXUG6qNw9AbXsyGL9f7LumE9g4yRY82mjxY=
+github.com/oliread/usbdmx v0.0.0-20200510141510-3b43952fa44b h1:pnFqbbaiHhPDRFzmDd5bwhvK8+GuVcAKYm16Hx3GGiU=
+github.com/oliread/usbdmx v0.0.0-20200510141510-3b43952fa44b/go.mod h1:kukZUsMNoFg0Yreqbw5b0PySBGw/E9nq992WaBuOCbc=
