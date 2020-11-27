@@ -18,27 +18,6 @@ func main() {
 	for {
 		time.Sleep(1000 * time.Millisecond)
 
-		// Set values for channels.
-		dmx.SetChannel(1, byte(r.Intn(256)))
-		dmx.SetChannel(2, byte(r.Intn(256)))
-		dmx.SetChannel(3, byte(r.Intn(256)))
-		dmx.SetChannel(4, byte(r.Intn(256)))
-
-		dmx.SetChannel(5, byte(r.Intn(256)))
-		dmx.SetChannel(6, byte(r.Intn(256)))
-		dmx.SetChannel(7, byte(r.Intn(256)))
-		dmx.SetChannel(8, byte(r.Intn(256)))
-
-		dmx.SetChannel(9, byte(r.Intn(256)))
-		dmx.SetChannel(10, byte(r.Intn(256)))
-		dmx.SetChannel(11, byte(r.Intn(256)))
-		dmx.SetChannel(12, byte(r.Intn(256)))
-
-		dmx.SetChannel(13, byte(r.Intn(256)))
-		dmx.SetChannel(14, byte(r.Intn(256)))
-		dmx.SetChannel(15, byte(r.Intn(256)))
-		dmx.SetChannel(16, byte(r.Intn(256)))
-
 		dmx.SetChannel(26, byte(r.Intn(256)))
 		dmx.SetChannel(27, byte(r.Intn(256)))
 		dmx.SetChannel(28, byte(r.Intn(256)))
