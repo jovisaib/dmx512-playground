@@ -1,12 +1,3 @@
-// Simple Go package to send DMX messages.
-// Copyright (c) 2013 AKUALAB INC. All Rights Reserved.
-// www.akualab.com - @akualab - info@akualab.com
-//
-// CREDITS:
-// Ported from pySimpleDMX (https://github.com/c0z3n/pySimpleDMX)
-// Written by Michael Dvorkin
-//
-// GNU General Public License v3.  http://www.gnu.org/licenses/
 package dmx
 
 import (

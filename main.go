@@ -2,64 +2,32 @@ package main
 
 import (
 	"log"
-	"math/rand"
-	"time"
 
-	"github.com/jovisaib/dmx512-playground/dmx"
+	"github.com/oliread/usbdmx"
+	"github.com/oliread/usbdmx/ft232"
 )
 
 func main() {
-	r := rand.New(rand.NewSource(99))
-	dmx, e := dmx.NewDMXConnection("/dev/ttyUSB0")
-	if e != nil {
-		log.Fatal("ERROR: ", e)
+	vid := 1
+	pid := 1
+	outputInterfaceID := 1
+	inputInterfaceID := 1
+	debugLevel := 1
+
+	config := usbdmx.NewConfig(uint16(vid), uint16(pid), outputInterfaceID, inputInterfaceID, debugLevel)
+	config.GetUSBContext()
+
+	controller := ft232.NewDMXController(config)
+	if err := controller.Connect(); err != nil {
+		log.Fatal(err)
 	}
 
-	for {
-		time.Sleep(1000 * time.Millisecond)
+	controller.SetChannel(1, 255)
+	controller.SetChannel(2, 255)
+	controller.SetChannel(3, 255)
+	controller.SetChannel(4, 255)
 
-		dmx.SetChannel(26, 200)
-		dmx.SetChannel(100, byte(r.Intn(256)))
-		dmx.SetChannel(28, byte(r.Intn(256)))
-		dmx.SetChannel(29, byte(r.Intn(256)))
-
-		if err := dmx.Render(); err != nil {
-			log.Fatal("RENDER ERROR: ", err)
-		}
-
-		log.Println("RENDER 1!")
-
-		dmx.SetChannel(31, 200)
-		dmx.SetChannel(32, byte(r.Intn(256)))
-		dmx.SetChannel(33, byte(r.Intn(256)))
-		dmx.SetChannel(34, byte(r.Intn(256)))
-
-		if err := dmx.Render(); err != nil {
-			log.Fatal("RENDER ERROR: ", err)
-		}
-
-		log.Println("RENDER 2!")
-
-		dmx.SetChannel(36, 200)
-		dmx.SetChannel(37, byte(r.Intn(256)))
-		dmx.SetChannel(38, byte(r.Intn(256)))
-		dmx.SetChannel(39, byte(r.Intn(256)))
-
-		if err := dmx.Render(); err != nil {
-			log.Fatal("RENDER ERROR: ", err)
-		}
-
-		log.Println("RENDER 3!")
-
-		dmx.SetChannel(41, 200)
-		dmx.SetChannel(42, byte(r.Intn(256)))
-		dmx.SetChannel(43, byte(r.Intn(256)))
-		dmx.SetChannel(44, byte(r.Intn(256)))
-
-		if err := dmx.Render(); err != nil {
-			log.Fatal("RENDER ERROR: ", err)
-		}
-
-		log.Println("RENDER 4!")
+	if err := controller.Render(); err != nil {
+		log.Fatal(err)
 	}
 }
