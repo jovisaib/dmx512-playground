@@ -11,7 +11,7 @@ import (
 const (
 	START_VAL       = 0x7E
 	END_VAL         = 0xE7
-	BAUD            = 9600
+	BAUD            = 57600
 	TIMEOUT         = 1
 	DEV             = "/dev/ttyUSB0"
 	FRAME_SIZE      = 511
