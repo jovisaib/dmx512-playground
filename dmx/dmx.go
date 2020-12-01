@@ -4,14 +4,15 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"time"
 
-	serial "github.com/tarm/goserial"
+	"github.com/distributed/sers"
 )
 
 const (
 	START_VAL       = 0x7E
 	END_VAL         = 0xE7
-	BAUD            = 57600
+	BAUD            = 250000
 	TIMEOUT         = 1
 	DEV             = "/dev/ttyUSB0"
 	FRAME_SIZE      = 511
@@ -34,6 +35,7 @@ type DMX struct {
 	frame          [FRAME_SIZE]byte
 	packet         [FRAME_SIZE + 10]byte
 	serial         io.ReadWriteCloser
+	port           sers.SerialPort
 	redChan        int
 	blueChan       int
 	greenChan      int
@@ -51,11 +53,15 @@ func NewDMXConnection(device string) (dmx *DMX, err error) {
 		dmx.dev = DEV
 	}
 
-	c := &serial.Config{Name: dmx.dev, Baud: BAUD}
-	dmx.serial, err = serial.OpenPort(c)
+	c, err := sers.Open(dmx.dev)
+	c.SetMode(250000, 8, 0, 2, 0)
+	// c := &serial.Config{Name: dmx.dev, Baud: BAUD}
 	if err != nil {
 		return
 	}
+
+	dmx.serial = c
+	dmx.port = c
 	log.Printf("Opened port [%s].", dmx.dev)
 	return
 }
@@ -97,7 +103,25 @@ func (dmx *DMX) Render() error {
 	p = append(p, END_VAL)
 
 	// Write dmx frame.
-	_, err := dmx.serial.Write(p)
+
+	b := make([]byte, 512)
+	for i := range b {
+		if i != 0 {
+			b[i] = byte(0)
+		}
+	}
+
+	for _, i := range []int{4, 8, 12, 16, 20, 24, 29, 34, 39, 44} {
+		b[i] = byte(255)
+	}
+
+	dmx.port.SetBreak(true)
+	time.Sleep(500 * time.Millisecond)
+	dmx.port.SetBreak(false)
+	time.Sleep(500 * time.Millisecond)
+
+	log.Println("P VALUE: ", b)
+	_, err := dmx.serial.Write(b)
 	if err != nil {
 		return err
 	}

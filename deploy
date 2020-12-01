@@ -1,0 +1,3 @@
+go build && 
+
+rsync -avP dmx512-playground root@10.72.72.150:

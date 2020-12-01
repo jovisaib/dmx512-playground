@@ -4,6 +4,8 @@ github.com/OliRead/usbdmx v0.0.0-20200510141510-3b43952fa44b h1:8MIcN2nuec2J/FSz
 github.com/OliRead/usbdmx v0.0.0-20200510141510-3b43952fa44b/go.mod h1:f/AUjvYEyjKnxFs9MCSMHxCWzW0xpyq8wZVFxmgaUA8=
 github.com/akualab/dmx v0.0.0-20130922234952-1ec6837faba7 h1:NiSujjEOEg6lSdiIftZoHa0oAsDTZlabXrU7Lfa5jyw=
 github.com/akualab/dmx v0.0.0-20130922234952-1ec6837faba7/go.mod h1:fGkOc9nHK/v2N4kXLbb+uet+BC9TiqI7srodczLFMnQ=
+github.com/distributed/sers v1.1.0 h1:ikeWvkO7V0/+hzS0qQeFvjJbEqyNhPLjLWAiUqWupdU=
+github.com/distributed/sers v1.1.0/go.mod h1:aKSQgj7HFcBZ9hsjqOeSp4Z7Kk4ypNR7bVsggdWc0P4=
 github.com/google/gousb v2.1.0+incompatible h1:ApzMDjF3FeO219QwWybJxYfFhXQzPLOEy0o+w9k5DNI=
 github.com/google/gousb v2.1.0+incompatible/go.mod h1:Tl4HdAs1ThE3gECkNwz+1MWicX6FXddhJEw7L8jRDiI=
 github.com/oliRead/usbdmx v0.0.0-20200510141510-3b43952fa44b h1:FEP1SD47F6ByZHXORHYRDbL5bFtARHqb0a1Iwn2ve78=

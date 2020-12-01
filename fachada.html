@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Fachada iluminacion</title>
+    <script type="text/javascript">
+
+        // the WebSocket instance
+        var websocket;
+        var isConnected = false;
+        // the websocket host location
+        var wshost = "nat1.n4m.zone:25730";
+
+
+        function setSimpleDeskChannel(address, value) {
+            if (isConnected === true)
+                websocket.send("CH|" + address + "|" + value);
+            else
+                alert("You must connect to QLC+ WebSocket first!");
+        }
+
+
+        function connectToWebSocket(host) {
+            var url = 'ws://' + host + '/qlcplusWS';
+            websocket = new WebSocket(url);
+            // update the host information
+            wshost = "http://" + host;
+
+            websocket.onopen = function (ev) {
+                //alert("QLC+ connection successful");
+                isConnected = true;
+                console.log("CONNECTED")
+
+
+                    for (let i = 1; i <= 44; i++) {
+                        let r = 0;
+                        console.log("wip" + r)
+                        setSimpleDeskChannel(i, r);
+                    }
+                // setInterval(function () {
+                //     for (let i = 1; i <= 44; i++) {
+                //         let r = Math.floor(Math.random() * 256);
+                //         console.log("wip" + r)
+                //         setSimpleDeskChannel(i, r);
+                //     }
+                // }, 2000);
+
+            };
+
+            websocket.onclose = function (ev) {
+                alert("QLC+ connection lost!");
+            };
+
+            websocket.onerror = function (ev) {
+                alert("QLC+ connection error!");
+            };
+
+            // WebSocket message handler. This is where async events
+            // will be shown or processed as needed
+            websocket.onmessage = function (ev) {
+                // Uncomment the following line to display the received message
+                //alert(ev.data);
+
+                // Event data is formatted as follows: "QLC+API|API name|arguments"
+                // Arguments vary depending on the API called
+
+                var msgParams = ev.data.split('|');
+                console.log(msgParams)
+            };
+        };
+
+        connectToWebSocket(wshost);
+
+    </script>
+
+<body>
+
+    <h2>Fachada iluminacion</h2>
+
+
+</body>
+
+</html>
